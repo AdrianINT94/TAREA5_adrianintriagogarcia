@@ -4,16 +4,20 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import base.model.LogOperacion;
 import base.model.Persona;
+import base.repository.LogRepository;
 import base.repository.PersonaRepository;
 
 @Service
 public class PersonaService {
 
     private final PersonaRepository personaRepository;
-
-    public PersonaService(PersonaRepository personaRepository) {
+    private final LogRepository logRepository;
+    
+    public PersonaService(PersonaRepository personaRepository,LogRepository logRepository) {
         this.personaRepository = personaRepository;
+        this.logRepository =logRepository;
     }
 
     public List<Persona> findAll() {
@@ -21,7 +25,12 @@ public class PersonaService {
     }
 
     public Persona save(Persona persona) {
-        return personaRepository.save(persona);
+    	Persona guardada = personaRepository.save(persona);
+    	
+    	LogOperacion log= new LogOperacion(java.time.LocalDateTime.now(),"admin","NUEVO","Se ha registrado la persona" +guardada.getNombre());
+    	logRepository.registrarAccion(log);
+    	
+    	return guardada;  
     }
 
     public void deleteById(Long id) {

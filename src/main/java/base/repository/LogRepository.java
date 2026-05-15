@@ -19,7 +19,6 @@ public class LogRepository {
 
     public void registrarAccion(LogOperacion historial) {
     	ObjectContainer canal = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), RUTA_ARCHIVO);
-    	
     	try {
     		canal.store(historial);
     		canal.commit();
@@ -34,7 +33,6 @@ public class LogRepository {
     	}
     		
     }
-    
     public List<LogOperacion> filtrarUsuario(String nombreBuscado){
     	ObjectContainer lector = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),RUTA_ARCHIVO);
     	
@@ -61,7 +59,6 @@ public class LogRepository {
     			public boolean match(LogOperacion log) {
     				boolean okUser = (usuario == null || usuario.isBlank()) || log.getUsuario().equalsIgnoreCase(usuario);
     				boolean okTipo = tipo.equals("TODOS") || log.getTipoOperacion().equals(tipo);
-    				
     				LocalDate fecha = log.getFechaHora().toLocalDate();
     				boolean okInicio = (inicio == null) || !fecha.isBefore(inicio);
     				boolean okFin = (fin ==null) || !fecha.isAfter(fin);

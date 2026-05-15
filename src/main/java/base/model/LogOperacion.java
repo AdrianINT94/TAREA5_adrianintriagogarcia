@@ -6,7 +6,6 @@ import java.time.LocalDateTime;
 public class LogOperacion  implements Serializable{
 	
 	private Long id;
-	
 	private LocalDateTime fechaHora;
 	private String usuario;
 	private String tipoOperacion;  

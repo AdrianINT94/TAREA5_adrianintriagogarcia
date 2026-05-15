@@ -83,6 +83,8 @@ public class Espectaculo {
         this.numeros = numeros;
     }
     
+    
+    
     @Override
     public String toString() {
     	return nombre + "( "+fechaInicio + " - " + fechaFin +")"; 

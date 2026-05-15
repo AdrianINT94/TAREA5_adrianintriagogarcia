@@ -35,6 +35,11 @@ public class MenuController {
     private void irHistorial() {
     	stageManager.switchScene("historial.fxml","Historial");
     }
+    
+    @FXML
+    private void irIncidencias() {
+    	stageManager.switchScene("incidencia.fxml", "Gestion indicencias");
+    }
 
     @FXML
     private void salir() {
