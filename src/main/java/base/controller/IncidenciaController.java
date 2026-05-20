@@ -2,6 +2,7 @@ package base.controller;
 
 import org.springframework.stereotype.Controller;
 
+import base.config.StageManager;
 import base.incidencias.Incidencia;
 import base.incidencias.ResolucionIncidencia;
 import base.repository.IncidenciaRepository;
@@ -15,22 +16,30 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import org.springframework.stereotype.Controller;
+
 
 @Controller
 public class IncidenciaController {
 	
 	@FXML private ComboBox<String> cbTipo;
 	@FXML private TextArea txtDescripcion;
-	@FXML private TextField txtIdPersona, txtIdEspectaculo, txtIdNumero;
+	@FXML private TextField  txtIdEspectaculo, txtIdNumero;
 	@FXML private TableView<Incidencia> tablaIncidencias;
 	@FXML private TableColumn<Incidencia, Long> colId;
 	@FXML private TableColumn<Incidencia,String> colTipo,colDesc;
 	@FXML private TableColumn<Incidencia,Boolean> colResuelta;
 	@FXML private Button btnResolver;
 	
-	private IncidenciaRepository repo = new IncidenciaRepository();
+	private final IncidenciaRepository repo;
+	private final StageManager stageManager;
 	
+	
+	public IncidenciaController(IncidenciaRepository repo, StageManager stageManager) {
+		super();
+		this.repo = repo;
+		this.stageManager = stageManager;
+	}
+
 	@FXML
 	public void initialize() {
 		cbTipo.setItems(FXCollections.observableArrayList("TECNICA","ARTISTICA","ORGANIZATIVA"));
@@ -49,13 +58,15 @@ public class IncidenciaController {
 		nueva.setDescripcion(txtDescripcion.getText());
 		
 		try {
-			if(!txtIdPersona.getText().isEmpty()) nueva.setIdPersonaReporta(Long.parseLong(txtIdPersona.getText()));
+			
 			if(!txtIdEspectaculo.getText().isEmpty()) nueva.setIdEspectaculo(Long.parseLong(txtIdEspectaculo.getText()));
 			if(!txtIdNumero.getText().isEmpty())nueva.setIdNumero(Long.parseLong(txtIdNumero.getText()));
 			
+			
+			repo.guardar(nueva);
 		}catch(Exception e) {
 			System.out.println("Error");
-			repo.guardar(nueva);
+			
 		}
 		}
 		@FXML 
@@ -66,7 +77,7 @@ public class IncidenciaController {
 		@FXML 
 		void limpiarCampos() {
 			txtDescripcion.clear();
-			txtIdPersona.clear();
+			
 			txtIdEspectaculo.clear();
 			txtIdNumero.clear();
 			cbTipo.getSelectionModel().clearSelection();
@@ -88,5 +99,10 @@ public class IncidenciaController {
 		        System.out.println("Selecciona una fila primero");
 
 		    }
+		}
+		    @FXML 
+		    private void volverMenu() {
+		    	stageManager.switchScene("menu.fxml","Panel de control");
+		    
       }
 }

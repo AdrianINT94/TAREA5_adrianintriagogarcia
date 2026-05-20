@@ -11,7 +11,7 @@ import org.xmldb.api.modules.XMLResource;
 @Service
 public class ExistDBService {
 
-		private String url ="xmldb:exist://localhost:8080/exist/xmlrpc/db/informes";
+		private String url ="xmldb:exist://localhost:8080/exist/xmlrpc/db/";
 		
 		public void guardarInforme(File archivoXml) {
 			
@@ -20,10 +20,11 @@ public class ExistDBService {
 				Database database =(Database) clase.getDeclaredConstructor().newInstance();
 				DatabaseManager.registerDatabase(database);
 				
-				Collection colecion = DatabaseManager.getCollection(url,"admin","contraseña");
+				String urlRaiz = "xmldb:exist://localhost:8080/exist/xmlrpc/db/"; //
+				Collection colecion = DatabaseManager.getCollection(url,"admin","admin");
 				
 				if(colecion == null) {
-					System.out.println("Error no se encuentra la coleccion /db/informes");
+					System.out.println("Error no se encuentra la coleccion db informes");
 					return;
 				}	
 				XMLResource recurso =(XMLResource) colecion.createResource(archivoXml.getName(),"XMLResource");

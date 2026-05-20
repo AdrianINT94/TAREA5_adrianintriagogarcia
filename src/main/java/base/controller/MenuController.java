@@ -30,6 +30,10 @@ public class MenuController {
     private void irEspectaculos() { 
         stageManager.switchScene("espectaculo.fxml", "Gestión Espectáculos"); 
     }
+    @FXML
+    private void irNumeros() {
+    	stageManager.switchScene("numero.fxml", "Gestion Numeros");
+    }
     
     @FXML
     private void irHistorial() {
@@ -39,6 +43,10 @@ public class MenuController {
     @FXML
     private void irIncidencias() {
     	stageManager.switchScene("incidencia.fxml", "Gestion indicencias");
+    }
+    @FXML
+    private void irDossier() {
+    	stageManager.switchScene("Dossier.fxml", "Gestion Mongdb");
     }
 
     @FXML

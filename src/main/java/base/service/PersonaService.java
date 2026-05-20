@@ -1,9 +1,7 @@
 package base.service;
 
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import base.model.LogOperacion;
 import base.model.Persona;
 import base.repository.LogRepository;
@@ -27,7 +25,7 @@ public class PersonaService {
     public Persona save(Persona persona) {
     	Persona guardada = personaRepository.save(persona);
     	
-    	LogOperacion log= new LogOperacion(java.time.LocalDateTime.now(),"admin","NUEVO","Se ha registrado la persona" +guardada.getNombre());
+    	LogOperacion log= new LogOperacion(java.time.LocalDateTime.now(),"admin","Nuevo","Se ha registrado la persona" +guardada.getNombre());
     	logRepository.registrarAccion(log);
     	
     	return guardada;  

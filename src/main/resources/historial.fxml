@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" spacing="15.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.controller.HistorialController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="629.0" spacing="15.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.controller.HistorialController">
    <children>
       <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0">
          <children>
@@ -19,12 +19,13 @@
             <TextField fx:id="txtFiltroUsuario" />
             <ComboBox fx:id="cbTipo" prefWidth="150.0" />
             <Button mnemonicParsing="false" onAction="#filtrarAvanzado" text="Buscar" />
+            <Button mnemonicParsing="false" onAction="#volverMenu" text="Volver" />
             <Button mnemonicParsing="false" onAction="#cargarTodo" text="Limpiar" />
             <DatePicker fx:id="dpFin" promptText="Hasta..." />
             <DatePicker fx:id="dpInicio" promptText="Desde..." />
          </children>
       </HBox>
-      <TableView fx:id="tablaLogs" prefHeight="300.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="tablaLogs" prefHeight="300.0" prefWidth="567.0" VBox.vgrow="ALWAYS">
         <columns>
             <TableColumn fx:id="colFecha" prefWidth="100.0" text="ColFecha" />
             <TableColumn fx:id="colUsuario" prefWidth="100.0" text="ColUsuario" />

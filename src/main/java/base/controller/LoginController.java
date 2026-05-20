@@ -31,7 +31,6 @@ public class LoginController {
         
         Credencial cuenta = credencialService.getByUsername(usuarioTexto);
 
-        
         if (cuenta != null && cuenta.getPassword().equals(passwordTexto)) {
             userSession.login(cuenta); 
             
@@ -43,7 +42,7 @@ public class LoginController {
                 default -> "login.fxml";
             };
             
-            stageManager.switchScene(fxml, "Circo - " + cuenta.getRol());
+            stageManager.switchScene(fxml, "Circo " + cuenta.getRol());
         }
     }
 }

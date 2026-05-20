@@ -3,9 +3,7 @@ package base.service;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.List;
-
 import org.springframework.stereotype.Service;
-
 import base.model.Espectaculo;
 import base.repository.EspectaculoRepository;
 
@@ -37,9 +35,9 @@ public class EspectaculoService {
     	
     	try(PrintWriter fichero = new PrintWriter(archivo)){
     		fichero.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
-    		fichero.println("<espectaculo");
+    		fichero.println("<espectaculo>");
     		fichero.println("<nombre> " + espectaculo.getNombre() + "</nombre>");
-    		fichero.println("<inicio>" + espectaculo.getFechaInicio()+ "</inicio");
+    		fichero.println("<inicio>" + espectaculo.getFechaInicio()+ "</inicio>");
     		fichero.println("</espectaculo>");
     	}catch(Exception e) {
     		System.out.println("algo a fallado al crear el XML "+ e.getMessage());

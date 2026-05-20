@@ -2,10 +2,13 @@ package base.controller;
 
 import java.time.LocalDate;
 import org.springframework.stereotype.Controller;
+import base.config.StageManager;
 import base.model.*;
 import base.service.*;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+
+
 import java.io.File;
 
 @Controller
@@ -14,13 +17,14 @@ public class EspectaculoController {
     private final EspectaculoService espectaculoService;
     private final CoordinadorService coordinadorService;
     private  final ExistDBService existDBService;
+    private final StageManager stageManager;
     
     
-    public EspectaculoController(EspectaculoService espectaculoService, CoordinadorService coordinadorService,ExistDBService existDBService ) {
+    public EspectaculoController(EspectaculoService espectaculoService, CoordinadorService coordinadorService,ExistDBService existDBService,StageManager stageManager ) {
         this.espectaculoService = espectaculoService;
         this.coordinadorService = coordinadorService;
         this.existDBService = existDBService;
-        
+        this.stageManager = stageManager;
     }
 
     @FXML private TextField txtNombre;
@@ -73,4 +77,10 @@ public class EspectaculoController {
         
         tablaEspectaculos.getItems().setAll(espectaculoService.findAll());
     }
-}
+
+
+	@FXML
+	private void volver() {
+		stageManager.switchScene("menu.fxml", "Panel de control");
+	}
+	}

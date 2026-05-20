@@ -47,6 +47,7 @@
             <Button mnemonicParsing="false" onAction="#guardarIncidencia" text="Registrar" />
             <Button mnemonicParsing="false" onAction="#limpiarCampos" text="Limpiar" />
             <Button fx:id="btnResolver" mnemonicParsing="false" onAction="#onResolverClick" text="Resolver" />
+            <Button mnemonicParsing="false" onAction="#volverMenu" text="Volver" />
          </children>
       </HBox>
       <TableView fx:id="tablaIncidencias" prefHeight="200.0" prefWidth="200.0">

@@ -13,7 +13,7 @@ public class Numero {
 
     private String nombre;
 
-    private String duracion;
+    private Double duracion;
 
     private int orden;
 
@@ -43,11 +43,11 @@ public class Numero {
         this.nombre = nombre;
     }
 
-    public String getDuracion() {
+    public Double getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(String duracion) {
+    public void setDuracion(Double duracion) {
         this.duracion = duracion;
     }
 
@@ -73,6 +73,11 @@ public class Numero {
 
     public void setArtistas(List<Artista> artistas) {
         this.artistas = artistas;
+    }
+    
+    @Override
+    public String toString() {
+    	return this.nombre + "-" + "min";
     }
 }
 	

@@ -5,8 +5,6 @@ import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-
-
 @Document
 public class DossierArtista {
 		
@@ -21,14 +19,14 @@ public class DossierArtista {
 		private List<String> especialidades;
 		private List<String> habilidades;
 		private List<Trayectoria> trayectoria;
-		private List<Observacion> observaciones;
+		private List<Observaciones> observaciones;
 		private List<Evaluacion> evaluaciones;
 		
 		public DossierArtista() {}
 
 		public DossierArtista(String id, String nombre, String email, String nacionalidad, String apodo, Long idArtista,
 				List<String> especialidades, List<String> habilidades, List<Trayectoria> trayectoria,
-				List<Observacion> observaciones, List<Evaluacion> evaluaciones) {
+				List<Observaciones> observaciones, List<Evaluacion> evaluaciones) {
 			super();
 			this.id = id;
 			this.nombre = nombre;
@@ -115,11 +113,11 @@ public class DossierArtista {
 			this.trayectoria = trayectoria;
 		}
 
-		public List<Observacion> getObservaciones() {
+		public List<Observaciones> getObservaciones() {
 			return observaciones;
 		}
 
-		public void setObservaciones(List<Observacion> observaciones) {
+		public void setObservaciones(List<Observaciones> observaciones) {
 			this.observaciones = observaciones;
 		}
 

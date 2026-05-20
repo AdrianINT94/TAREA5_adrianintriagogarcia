@@ -5,8 +5,8 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Component;
 import java.util.List;
-
 import javafx.scene.control.cell.PropertyValueFactory;
+import base.config.StageManager;
 import base.model.LogOperacion;
 import base.service.LogService;
 import javafx.collections.FXCollections;
@@ -22,10 +22,12 @@ import javafx.scene.control.TextField;
 public class HistorialController {
 	
 	private final LogService logService;
+	private final StageManager stageManager;
 
-	public HistorialController(LogService logService) {
+	public HistorialController(LogService logService,StageManager stageManager) {
 		
 		this.logService = logService;
+		this.stageManager = stageManager;
 	}
 	
 	@FXML private TableView<LogOperacion> tablaLogs;
@@ -75,6 +77,10 @@ public class HistorialController {
 		
 		List<LogOperacion> filtrados = logService.buscarLogsAvanzado(usuario, tipo, inicio, fin);
 		tablaLogs.setItems(FXCollections.observableArrayList(filtrados));
+	}
+	@FXML 
+	private void  volverMenu() {
+		stageManager.switchScene("menu.fxml", "Panel de control");
 	}
 
 }

@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Controller;
 
+import base.config.StageManager;
 import base.model.Artista;
 import base.model.LogOperacion;
 import base.repository.LogRepository;
@@ -17,10 +18,12 @@ public class ArtistaController {
 	
 	private final ArtistaService artistaService;
 	private final LogRepository logRepository; 
+	private final StageManager stageManager;
 	
-	public ArtistaController(ArtistaService artistaService, LogRepository logRepository) {
+	public ArtistaController(ArtistaService artistaService, LogRepository logRepository,StageManager stageManager) {
 		this.artistaService = artistaService;
 		this.logRepository = logRepository;
+		this.stageManager = stageManager;
 	}
 	
 	@FXML
@@ -38,5 +41,9 @@ public class ArtistaController {
 		logInicio.setResumen("El usuario ha visualizado la lista de artistas");
 		
 		logRepository.registrarAccion(logInicio);
+	}
+	@FXML 
+	private void  volverMenu() {
+		stageManager.switchScene("menu.fxml","Panel de control");
 	}
 }

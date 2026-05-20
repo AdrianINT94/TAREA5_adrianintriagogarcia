@@ -21,6 +21,7 @@
 
     <Button onAction="#guardar" text="Guardar" />
    <Button mnemonicParsing="false" onAction="#generarInforme" text="Generar informe XML" />
+   <Button mnemonicParsing="false" onAction="#volver" text="Volver" />
 
     <ListView fx:id="listaEspectaculos" prefHeight="0.0" prefWidth="400.0" />
    <TableView fx:id="tablaEspectaculos" prefHeight="200.0" prefWidth="200.0">

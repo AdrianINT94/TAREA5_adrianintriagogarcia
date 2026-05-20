@@ -1,24 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox spacing ="10" alignment = "CENTER"
-	xmlns="http://javafx.com/javafx/17"
-	xmlns:fx="http://javafx.com/fxml"
-	fx:controller="base.controller.NumeroController">
+<VBox alignment="CENTER" spacing="10" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="base.controller.NumeroController">
 
-	<Label text="Gestion de Numeros"/>
-	<TextField fx:id="txtNombre" prompText ="Nombre del numero "/>
-	<TextField fx:id="txtDuracion" prompText="Duracion"/>
-	<ComboBox fx:id="cbEspectaculo" prompText ="Seleccionar espectaculo"/>
-	<Label text="Seleccionar artistas"/>
-	<ListView fx:id="listaArtistas" prefHeight ="100"/>
+	<Label text="Gestion de Numeros" />
+	<TextField fx:id="txtNombre" promptText="Nombre del numero " />
+	<TextField fx:id="txtDuracion" promptText="Duracion" />
+	<ComboBox fx:id="cbEspectaculo" promptText="Seleccionar espectaculo" />
+	<Label text="Seleccionar artistas" />
+	<ListView fx:id="listaArtistas" prefHeight="100" />
 	
-	<Button text="Guardar" onAction ="#guardar"/>
+	<Button onAction="#guardar" text="Guardar" />
+   <Button mnemonicParsing="false" onAction="#borrar" text="Borrar" />
+   <Button mnemonicParsing="false" onAction="#volverMenu" text="Volver" />
 	
-	<Label text ="Lista de numeros"/>
-	<ListView fx:id="listaNumeros" prefHeight="150"/> 
+	<Label text="Lista de numeros" />
+	<ListView fx:id="listaNumeros" prefHeight="150" /> 
 
 
 </VBox>

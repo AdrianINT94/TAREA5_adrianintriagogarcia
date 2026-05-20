@@ -9,6 +9,8 @@
     <Button onAction="#irPersonas" prefWidth="250" text="Personas" />
     <Button onAction="#irArtistas" prefWidth="250" text="Artistas" />
     <Button onAction="#irEspectaculos" prefWidth="250" text="Espectáculos" />
+   <Button mnemonicParsing="false" onAction="#irNumeros" text="Numeros" />
+   <Button mnemonicParsing="false" onAction="#irDossier" text="Dossier" />
    <Button mnemonicParsing="false" onAction="#irHistorial" text="Ver Historial DB4O" />
    <Button mnemonicParsing="false" onAction="#irIncidencias" text="Gestionar Incidencias" />
     
