@@ -3,13 +3,8 @@ package base.service;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.db4o.ObjectContainer;
-import com.db4o.query.Predicate;
-
 import base.model.LogOperacion;
 import base.repository.LogRepository;
 
@@ -22,7 +17,6 @@ public class LogService {
 	
 	public void Operacion(String nombreUsuario,String tipo,String detalle) {
 		LogOperacion nuevoLog = new LogOperacion();
-		
 		
 		nuevoLog.setUsuario(nombreUsuario);
 		nuevoLog.setTipoOperacion(tipo);

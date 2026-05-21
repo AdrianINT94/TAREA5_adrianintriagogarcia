@@ -2,12 +2,16 @@ package base.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import base.incidencias.Incidencia;
 import base.incidencias.ResolucionIncidencia;
 import base.repository.IncidenciaRepository;
 
+@Service
 public class IncidenciaService {
-
+	@Autowired
 	private IncidenciaRepository incidenciaRepository;
 
     

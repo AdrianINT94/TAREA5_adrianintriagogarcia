@@ -3,9 +3,7 @@ package base.repository;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.stereotype.Repository;
-
 import base.model.LogOperacion;
 import com.db4o.query.Predicate;
 import com.db4o.Db4oEmbedded;
@@ -23,7 +21,7 @@ public class LogRepository {
     		canal.store(historial);
     		canal.commit();
     		
-    		System.out.println("historial actualizado. Registros totales: " + canal.query(LogOperacion.class).size());
+    		System.out.println("Historial actualizado registros totales: " + canal.query(LogOperacion.class).size());
     		
     	}catch(Exception e) {
     		System.err.println("Error al escribir en el archivo " + e.getMessage());
@@ -35,16 +33,11 @@ public class LogRepository {
     }
     public List<LogOperacion> filtrarUsuario(String nombreBuscado){
     	ObjectContainer lector = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(),RUTA_ARCHIVO);
-    	
     	try {
-    		List<LogOperacion> encontrados = lector.query(new Predicate<LogOperacion>() {
-    			@Override
-    			public boolean match(LogOperacion reg) {
-    				return reg.getUsuario().equalsIgnoreCase(nombreBuscado);
-    			}
-    		});
-    		return new ArrayList<>(encontrados);
+    		LogOperacion registro = new LogOperacion();
+    		registro.setUsuario(nombreBuscado);
     		
+    		return new ArrayList<>(lector.queryByExample(registro));
     	}finally {
     		lector.close();
     	}
@@ -57,19 +50,22 @@ public class LogRepository {
     		List<LogOperacion> resultado = lector.query(new Predicate<LogOperacion>() {
     			@Override
     			public boolean match(LogOperacion log) {
-    				boolean okUser = (usuario == null || usuario.isBlank()) || log.getUsuario().equalsIgnoreCase(usuario);
-    				boolean okTipo = tipo.equals("TODOS") || log.getTipoOperacion().equals(tipo);
+    				boolean User = (usuario == null || usuario.isBlank()) || log.getUsuario().equalsIgnoreCase(usuario);
+    				boolean Tipo = tipo.equals("todos") || log.getTipoOperacion().equals(tipo);
     				LocalDate fecha = log.getFechaHora().toLocalDate();
-    				boolean okInicio = (inicio == null) || !fecha.isBefore(inicio);
-    				boolean okFin = (fin ==null) || !fecha.isAfter(fin);
+    				boolean Inicio = (inicio == null) || !fecha.isBefore(inicio);
+    				boolean Fin = (fin ==null) || !fecha.isAfter(fin);
     				
-    				return okUser && okTipo &&okInicio &&okFin;
+    				return User && Tipo && Inicio && Fin;
     			}
     		});
     		return new ArrayList<>(resultado);
+    		
     	}catch(Exception e) {
     		e.printStackTrace();
     		return new ArrayList<>();
+    		
+    		
     	}finally {
     		lector.close();
     	}

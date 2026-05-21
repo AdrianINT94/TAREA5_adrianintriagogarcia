@@ -37,7 +37,7 @@ public class ArtistaController {
 		LogOperacion logInicio = new LogOperacion();
 		logInicio.setFechaHora(LocalDateTime.now());
 		logInicio.setUsuario("Sistema");
-		logInicio.setTipoOperacion("CONSULTA");
+		logInicio.setTipoOperacion("Consulta");
 		logInicio.setResumen("El usuario ha visualizado la lista de artistas");
 		
 		logRepository.registrarAccion(logInicio);

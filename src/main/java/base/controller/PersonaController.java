@@ -18,11 +18,11 @@ import javafx.scene.control.TextField;
 @Component
 public class PersonaController {
 
-    private final PersonaService personaService;
-    private final ArtistaService artistaService;      
-    private final CoordinadorService coordinadorService;
-    private final StageManager stageManager;
-    private final LogService logService;
+    private  PersonaService personaService;
+    private  ArtistaService artistaService;      
+    private  CoordinadorService coordinadorService;
+    private  StageManager stageManager;
+    private  LogService logService;
     
     public PersonaController(PersonaService personaService, ArtistaService artistaService, CoordinadorService coordinadorService, LogService logService, StageManager stageManager) {
         this.personaService = personaService;
@@ -35,9 +35,7 @@ public class PersonaController {
     @FXML private ListView<Persona> listaPersonas;
     @FXML private TextField txtNombre, txtEmail, txtNacionalidad,txtApodo;
     @FXML private ComboBox<String> cbTipoPersona;
-
-    @FXML
-    public void initialize() {
+    @FXML public void initialize() {
         
         cbTipoPersona.getItems().setAll("Artista", "Coordinador");
         cargar();
@@ -60,10 +58,7 @@ public class PersonaController {
             coordinador.setEmail(email);
             coordinador.setNacionalidad(nacion);
             coordinador.setSenior(true); 
-            
-            
             coordinadorService.save(coordinador); 
-            
             logService.Operacion("Admin", "NUEVO", "Se ha insertado un nuevo Coordinador" + nombre);
         } else {
             
@@ -77,26 +72,22 @@ public class PersonaController {
             
             logService.Operacion("Admin","NUEVO"," nuevo Artista " +nombre);
         }
-
-        
         txtNombre.clear(); 
         txtEmail.clear(); 
         txtNacionalidad.clear();
         cbTipoPersona.setValue(null);
         cargar();
     }
-
     @FXML
     private void borrar() {
         Persona seleccionada = listaPersonas.getSelectionModel().getSelectedItem();
         if (seleccionada == null) return;
         
         
-        logService.Operacion("Admin","BORRADO","Se ha borrado " + seleccionada.getNombre() + "ID: " + seleccionada.getId());
+        logService.Operacion("Admin","borrado","Se ha borrado " + seleccionada.getNombre() + "ID: " + seleccionada.getId());
         personaService.deleteById(seleccionada.getId());
         cargar();
     }
-    
     
     @FXML
     private void cargar() {
